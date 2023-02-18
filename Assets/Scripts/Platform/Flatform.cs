@@ -11,4 +11,9 @@ public class Flatform : MonoBehaviour
             GameManager.Ins.RoadManager.SwapPos(this.gameObject);
         }
     }
+
+    private void OnEnable()
+    {
+        
+    }
 }
