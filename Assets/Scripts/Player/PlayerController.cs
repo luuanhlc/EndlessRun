@@ -46,12 +46,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) && GameManager.Ins.CurrentLane != 1)
         {
             Turn(GameManager.Ins.CurrentLane, GameManager.Ins.CurrentLane - 1);
-            GameManager.Ins.CurrentLane--;
+            //GameManager.Ins.CurrentLane--;
         }
         if(Input.GetKeyDown(KeyCode.D) && GameManager.Ins.CurrentLane != 3)
         {
             Turn(GameManager.Ins.CurrentLane, GameManager.Ins.CurrentLane + 1);
-            GameManager.Ins.CurrentLane++;
+            //GameManager.Ins.CurrentLane++;
         }
         if (Input.GetKeyDown(KeyCode.W) && canJump && !isRoll)
         {
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
         toPos.x = Lane[toLane - 1];
         //rb.transform.DOJump(toPos, .2f, 1, .2f);
         rb.DOMove(toPos, .2f);
-
+        GameManager.Ins.CurrentLane += Director;
     }
     public void Jump()
     {

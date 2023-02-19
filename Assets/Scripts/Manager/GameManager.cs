@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AmazingAssets.CurvedWorld;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     public UIManager UIManager;
     public ForceManager ForceManager;
     public Asset assetD;
+    public CurvedWorldController CurveController;
 
     private bool _isPlaying = false;
 
@@ -19,7 +21,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Ins = this;
-
+        Application.targetFrameRate = 400;
+        QualitySettings.vSyncCount = 0;
     }
     #endregion
 

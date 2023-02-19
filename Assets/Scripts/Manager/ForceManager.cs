@@ -19,15 +19,14 @@ public class ForceManager : MonoBehaviour
     {
         for(int i = 0; i < maxForceObj; i++)
         {
-            acctiveForce.Add(Instantiate(GameManager.Ins.assetD.force, poolForceParent.transform.position, Quaternion.identity));
+            force.Add(Instantiate(GameManager.Ins.assetD.force, poolForceParent.transform.position, Quaternion.identity));
+            force[i].gameObject.SetActive(false);
         }
     }
 
     public void poolUnActive(GameObject gameObject)
     {
         gameObject.SetActive(false);
-        //acctiveForce.Remove(gameObject);
-        force.Add(gameObject);
     }
 
 }

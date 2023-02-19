@@ -29,6 +29,7 @@ public class RoadManager : MonoBehaviour
         for (i = 0; i < poolNumber; i++)
         {
             Flatform temp = Instantiate(Platform, new Vector3(0, 0, 16) * i, Quaternion.identity).GetComponent<Flatform>();
+            temp.transform.parent = Pool.transform;
             platS.Add(temp);
         }
     }

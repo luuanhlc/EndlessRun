@@ -46,7 +46,6 @@ public class TouchManager : MonoBehaviour
                                 //SetCurrentLand
 
                                 // idea them mot land dang tren duong den de tinh toan con current lane chi dat khi da o vi tri lane do
-                                GameManager.Ins.CurrentLane++;
                                 fp = Input.GetTouch(0).position;
                             }
                         }
@@ -57,7 +56,6 @@ public class TouchManager : MonoBehaviour
                             {
                                 GameManager.Ins.PlayerController.Turn(GameManager.Ins.CurrentLane, GameManager.Ins.CurrentLane - 1);
 
-                                GameManager.Ins.CurrentLane--;
                                 fp = Input.GetTouch(0).position;
                             }
                         }

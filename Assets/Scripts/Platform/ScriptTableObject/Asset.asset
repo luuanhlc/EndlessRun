@@ -19,4 +19,4 @@ MonoBehaviour:
     AssetPerfab: {fileID: 126676300121878793, guid: 5f5987751587c5048a7538c4253946cc, type: 3}
   - Name: SlideTrap
     AssetPerfab: {fileID: 3215035825070091833, guid: 78ccd081ce664c14dadb55d20c2e67ac, type: 3}
-  force: {fileID: 0}
+  force: {fileID: 1206335710128586989, guid: 07935326f7c046f4695261063beee6e3, type: 3}
