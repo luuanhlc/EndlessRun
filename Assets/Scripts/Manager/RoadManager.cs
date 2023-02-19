@@ -28,7 +28,7 @@ public class RoadManager : MonoBehaviour
         platS = new List<Flatform>();
         for (i = 0; i < poolNumber; i++)
         {
-            Flatform temp = Instantiate(Platform, new Vector3(0, 0, 16) * i, Quaternion.identity).GetComponent<Flatform>();
+            Flatform temp = Instantiate(Platform, new Vector3(0, 0, 8.5f) * i, Quaternion.identity).GetComponent<Flatform>();
             temp.transform.parent = Pool.transform;
             platS.Add(temp);
         }
@@ -38,7 +38,7 @@ public class RoadManager : MonoBehaviour
     {
         platS.Remove(gameObject.GetComponent<Flatform>());
         platS.Add(gameObject.GetComponent<Flatform>());
-        gameObject.transform.position = new Vector3(0, 0, 16) * i;
+        gameObject.transform.position = new Vector3(0, 0, 8.5f) * i;
         i++;
     }
 }

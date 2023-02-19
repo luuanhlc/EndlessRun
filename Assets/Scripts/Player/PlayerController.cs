@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Unity.Burst.CompilerServices;
+
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody rb;
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
     RaycastHit slopeHit;
 
     [SerializeField] private float jumpHeight;
+    [SerializeField] private LayerMask wallMask;
 
     private float currentSpeed;
     private float force;
@@ -30,9 +33,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Lane[0] = -3;
+        Lane[0] = -1;
         Lane[1] = 0;
-        Lane[2] = 3;
+        Lane[2] = 1;
     }
 
     float yVelocity;
@@ -102,12 +105,26 @@ public class PlayerController : MonoBehaviour
     public void Turn(int crrLane, int toLane)
     {
         int Director = toLane - crrLane;
-        Vector3 toPos = this.transform.position + this.transform.right * Director * 2f + Vector3.forward * rb.velocity.magnitude * .2f ;
-        toPos.x = Lane[toLane - 1];
+        float xPos = (wallCheck()) / 3;
+        Vector3 toPos = this.transform.position + this.transform.right * Director * xPos + Vector3.forward * rb.velocity.magnitude * .2f ;
+        toPos.x = Lane[toLane - 1] * xPos;
         //rb.transform.DOJump(toPos, .2f, 1, .2f);
         rb.DOMove(toPos, .2f);
         GameManager.Ins.CurrentLane += Director;
     }
+
+    private float wallCheck()
+    {
+        RaycastHit wallLeft;
+        RaycastHit wallRight;
+
+
+        Physics.Raycast(transform.position, -transform.TransformDirection(Vector3.right), out wallLeft, Mathf.Infinity, wallMask);
+        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out wallRight, Mathf.Infinity, wallMask);
+
+        return Vector3.Distance(wallRight.point, wallLeft.point);
+    }
+
     public void Jump()
     {
         _ani.SetTrigger("Jump");
